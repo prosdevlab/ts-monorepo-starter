@@ -42,6 +42,7 @@ ts-monorepo-starter/
 ├── .github/             # Workflows, Dependabot and zizmor config, issue forms, PR template
 ├── .husky/              # Git hooks
 ├── packages/            # All packages (the examples are listed below)
+├── scripts/             # check-changesets.mjs: every changeset parses (CI runs it)
 ├── .editorconfig        # Editor defaults matching Biome's formatter
 ├── AGENTS.md            # Instructions for coding agents (CLAUDE.md imports it)
 ├── biome.json           # Biome configuration
@@ -382,6 +383,10 @@ Every package lists `"files": ["dist"]`. Without it, what ships depends on the t
 `pnpm check:unused` runs [knip](https://knip.dev/), and CI runs it on every push. It fails on files nothing imports, exports nothing uses, dependencies nothing imports, and imports of packages a `package.json` doesn't declare. Exports from a package's entry file count as its public API, so they are never reported.
 
 knip reads most tools' config files itself, so the template needs no `knip.json`. If knip reports something that is used, add a `knip.json` entry for it rather than deleting the code.
+
+### Changeset Check
+
+`pnpm check:changesets` reads every file in `.changeset/` with the parser the release uses, and fails when one can't be parsed or names a package this repository doesn't have. CI runs it on every push, so a broken changeset fails its own pull request instead of the release after merge. A pull request with no changeset passes.
 
 ### Issues, Pull Requests and Security Reports
 
