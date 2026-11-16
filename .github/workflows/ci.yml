@@ -45,6 +45,10 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      # Reads every changeset the way the release will, so a malformed one fails here.
+      - name: Changesets
+        run: pnpm check:changesets
+
       # example:template-only
       # Keeps every example's lines between its markers, so an example can be removed cleanly.
       - name: Check examples
