@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { checkChangesets } from './check-changesets.mjs';
+import { checkChangesets, releasablePackages } from './check-changesets.mjs';
 
 const packages = new Set(['pkg-a', '@scope/pkg-b']);
 const check = (files: Record<string, string>) =>
@@ -35,5 +35,16 @@ describe('checkChangesets', () => {
       'two.md': 'no frontmatter at all\n',
     });
     expect(problems.map((p) => p.split(':')[0])).toEqual(['one.md', 'two.md']);
+  });
+});
+
+describe('releasablePackages', () => {
+  it('leaves out the workspace root, which Changesets refuses to release', () => {
+    const listed = [{ name: 'my-workspace' }, { name: 'pkg-a' }, { name: '@scope/pkg-b' }];
+    const allowed = releasablePackages(listed, 'my-workspace');
+    expect([...allowed]).toEqual(['pkg-a', '@scope/pkg-b']);
+    expect(
+      checkChangesets(new Map([['root.md', '---\n"my-workspace": patch\n---\n\nx\n']]), allowed)
+    ).toEqual(['root.md: no package named my-workspace in this workspace']);
   });
 });
