@@ -81,6 +81,9 @@ pnpm check:packages
 # Unused files, exports and dependencies, and undeclared dependencies (knip; no build needed)
 pnpm check:unused
 
+# Every changeset parses the way the release will read it, and names a package in this repo
+pnpm check:changesets
+
 # Clean all build outputs
 pnpm clean
 ```
@@ -137,6 +140,7 @@ Run the same sequence CI runs, in this order, and report any failure with its ou
 pnpm install --frozen-lockfile
 pnpm audit --audit-level high
 pnpm lint
+pnpm check:changesets
 pnpm check:unused
 pnpm build
 pnpm typecheck
