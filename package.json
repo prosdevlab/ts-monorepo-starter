@@ -27,21 +27,21 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
-    "@biomejs/biome": "2.6.7",
+    "@biomejs/biome": "2.6.8",
     "@changesets/cli": "3.0.3",
     "@changesets/parse": "1.0.0",
     "@commitlint/cli": "21.2.4",
     "@commitlint/config-conventional": "21.2.4",
     "@tsconfig/node24": "24.0.6",
     "@types/node": "26.6.5",
-    "@vitest/coverage-v8": "5.1.0",
+    "@vitest/coverage-v8": "5.1.1",
     "husky": "9.1.7",
-    "knip": "6.45.1",
-    "pkg-pr-new": "0.0.93",
+    "knip": "6.46.1",
+    "pkg-pr-new": "0.0.94",
     "publint": "0.3.25",
-    "turbo": "2.11.11",
+    "turbo": "2.11.13",
     "typescript": "7.0.2",
-    "vitest": "5.1.0"
+    "vitest": "5.1.1"
   },
   "packageManager": "pnpm@12.15.0",
   "engines": {
