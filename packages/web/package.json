@@ -37,10 +37,10 @@
   ],
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
-    "@playwright/test": "1.65.0",
+    "@playwright/test": "1.65.1",
     "@rollup/plugin-terser": "1.0.2",
     "@size-limit/file": "14.3.0",
-    "rollup": "4.68.2",
+    "rollup": "4.68.8",
     "size-limit": "14.3.0",
     "typescript": "7.0.2"
   }
